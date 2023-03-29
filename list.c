@@ -35,7 +35,9 @@ int insert_ordered_list(node* head, int elem){
     node new_head=NULL;
     if(insert_head_list(new_head,elem)) return 1;
     
-    while(q && (q->data < new_head->data))
+    while(q && (q->data < new_head->data)){
+        
+    }
 }
 
 int print_list(node head){
