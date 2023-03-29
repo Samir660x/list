@@ -29,15 +29,28 @@ int insert_tail_list(node* head, int elem){
 }
 
 int insert_ordered_list(node* head, int elem){
-    node q=*head;
-    node r=*head;
+    node search=*head; //cerca
+    node back=*head; //valore precedente
 
     node new_head=NULL;
-    if(insert_head_list(new_head,elem)) return 1;
+    if(insert_head_list(&new_head,elem)) return 1;
     
-    while(q && (q->data < new_head->data)){
-        
+    while(search!=NULL && (search->data < new_head->data)){
+        back=search;
+        search=search->next;
     }
+    if(search==(*head)){
+        new_head->next=*head;
+        *head=new_head;
+    }else{
+        back->next=new_head;
+        new_head->next=search;
+    }
+    return 0;
+}
+
+node* search_elem(node head, int key, int* elem){
+
 }
 
 int print_list(node head){

@@ -10,7 +10,7 @@ int insert_tail_list(node* head, int elem);
 
 int insert_ordered_list(node* head, int elem);
 
-//int search_elem();
+node* search_elem(node head, int key, int* elem);
 
 //int modify_elem();
 

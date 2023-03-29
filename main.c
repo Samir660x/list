@@ -3,8 +3,8 @@
 #include <stdlib.h>
 
 int main(){
-    node a;
-    insert_tail_list(&a,1);
-    insert_tail_list(&a,12);
+    node a=NULL;
+    insert_ordered_list(&a,12);
+    insert_ordered_list(&a,2);
     print_list(a);
 }
