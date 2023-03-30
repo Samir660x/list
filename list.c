@@ -49,8 +49,11 @@ int insert_ordered_list(node* head, int elem){
     return 0;
 }
 
-node* search_elem(node head, int key, int* elem){
-
+node search_elem(node head, int key){
+    while(head!=NULL && head->data!=key){
+        head=head->next;
+    }
+    return head;
 }
 
 int print_list(node head){

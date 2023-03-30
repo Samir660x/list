@@ -6,5 +6,6 @@ int main(){
     node a=NULL;
     insert_ordered_list(&a,12);
     insert_ordered_list(&a,2);
-    print_list(a);
+    node b=search_elem(a,12);
+    print_list(b);
 }
