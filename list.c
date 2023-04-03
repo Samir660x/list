@@ -29,8 +29,8 @@ int insert_tail_list(node* head, int elem){
 }
 
 int insert_ordered_list(node* head, int elem){
-    node search=*head; //cerca
-    node back=*head; //valore precedente
+    node search=*head;
+    node back=*head; //nodo precedente
 
     node new_head=NULL;
     if(insert_head_list(&new_head,elem)) return 1;
@@ -54,6 +54,15 @@ node search_elem(node head, int key){
         head=head->next;
     }
     return head;
+}
+
+int modify_elem(node* head,int key, int elem){
+    node node=search_elem(*head, key);
+    if(node){
+        node->data=elem;
+        return 0;
+    }
+    return 1;
 }
 
 int print_list(node head){

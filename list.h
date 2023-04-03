@@ -12,9 +12,9 @@ int insert_ordered_list(node* head, int elem);
 
 node search_elem(node head, int key);
 
-//int modify_elem();
+int modify_elem(node* head,int key, int elem);
 
-//int delete_elem()
+//int delete_elem();
 
 int print_list(node head);
 
