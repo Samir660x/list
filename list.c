@@ -5,7 +5,7 @@
 
 int insert_head_list(node* head, int elem){
     node new_head=NULL;
-    if( (new_head=(node)malloc(sizeof(struct node))) ){
+    if((new_head=(node) malloc(sizeof(struct node)))){
         new_head->data=elem;
         new_head->next=*head;
         *head=new_head;
@@ -17,12 +17,12 @@ int insert_head_list(node* head, int elem){
 int insert_tail_list(node* head, int elem){
     node new_node=NULL;
     if((insert_head_list(&new_node,elem))) return 1;
-    if(*head==NULL){
+    if(*head==NULL){// Inserimento in testa
         *head=new_node;
         return 0;
     }
-    node p=*head;
-    while(p->next)// !=NULL
+    node p=*head; // Copia puntatore head
+    while(p->next!=NULL)
         p=p->next;
     p->next=new_node;
     return 0;
@@ -35,10 +35,11 @@ int insert_ordered_list(node* head, int elem){
     node new_head=NULL;
     if(insert_head_list(&new_head,elem)) return 1;
     
-    while(search!=NULL && (search->data < new_head->data)){
+    while(search!=NULL && (search->data < new_head->data)){// dato corrente < dato da inserire
         back=search;
         search=search->next;
     }
+    
     if(search==(*head)){
         new_head->next=*head;
         *head=new_head;
@@ -63,6 +64,27 @@ int modify_elem(node* head,int key, int elem){
         return 0;
     }
     return 1;
+}
+
+int delete_elem(node* head,int key){
+    if(*head==NULL) return 2;
+
+    node search=*head;
+    node back=*head;
+    while((search!=NULL) && (search->data != key)){
+        back=search;
+        search=search->next;
+    }
+    if(search==*head){
+        (*head)=search->next;
+        free(search);
+    }else if(search==NULL){
+        return 1;
+    }else{
+        back->next=search->next;
+        free(search);
+    }
+    return 0;
 }
 
 int print_list(node head){
