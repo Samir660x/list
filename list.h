@@ -18,6 +18,6 @@ int delete_elem(node*, int);
 
 int print_list(node);
 
-//int save_list(node c_head, char f_name[]);
+//int save_list(node c_head, char f_name[]);0
 
 //int load_list(node* c_head, char f_name[]);
