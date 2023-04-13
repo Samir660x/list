@@ -8,13 +8,15 @@ int insert_head_list(node*, int);
 
 int insert_tail_list(node*, int);
 
-int insert_ordered_list(node*, int);
-
 node search_elem(node, int);
 
 int modify_elem(node*,int, int);
 
 int delete_elem(node*, int);
+
+int insert_ordered_list(node*, int);
+
+int modify_ordered_list(node*,int, int);
 
 int print_list(node);
 

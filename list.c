@@ -28,28 +28,6 @@ int insert_tail_list(node* head, int elem){
     return 0;
 }
 
-int insert_ordered_list(node* head, int elem){
-    node search=*head;
-    node back=*head; //nodo precedente
-
-    node new_head=NULL;
-    if(insert_head_list(&new_head,elem)) return 1;
-    
-    while(search!=NULL && (search->data < new_head->data)){// dato corrente < dato da inserire
-        back=search;
-        search=search->next;
-    }
-    
-    if(search==(*head)){
-        new_head->next=*head;
-        *head=new_head;
-    }else{
-        back->next=new_head;
-        new_head->next=search;
-    }
-    return 0;
-}
-
 node search_elem(node head, int key){
     while(head!=NULL && head->data!=key){
         head=head->next;
@@ -87,13 +65,43 @@ int delete_elem(node* head,int key){
     return 0;
 }
 
+int insert_ordered_list(node* head, int elem){
+    node search=*head;
+    node back=*head; //nodo precedente
+
+    node new_head=NULL;
+    if(insert_head_list(&new_head,elem)) return 1;
+    
+    while(search!=NULL && (search->data < new_head->data)){// dato corrente < dato da inserire
+        back=search;
+        search=search->next;
+    }
+    
+    if(search==(*head)){
+        new_head->next=*head;
+        *head=new_head;
+    }else{
+        back->next=new_head;
+        new_head->next=search;
+    }
+    return 0;
+}
+
+int modify_ordered_list(node* head, int key, int elem){
+    int error=-1;
+    if((error=delete_elem(head,key))) return error;
+
+    if((error=insert_ordered_list(head,elem))) return error;
+
+    return 0;
+}
+
 int print_list(node head){
     int i=0;
     for(;head!=NULL;head=head->next, i++)
         printf("%d) %d\n",i+1,head->data);
     return i;
 }
-
 
 /*
 int Save_list(node c_head, char f_name[]){
